@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Викторина</title>
 
-	<!-- <link href='fonts?family=Ruslan+Display&subset=latin,cyrillic' rel='stylesheet' type='text/css'> -->
+	<!--   <link href='fonts?family=Ruslan+Display&subset=latin,cyrillic' rel='stylesheet' type='text/css'> -->
 	<script src="js/angular.js"></script>
 	<script src="js/qform.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
