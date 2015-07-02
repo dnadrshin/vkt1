@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Викторина</title>
+	<link rel="stylesheet" src="bootstrap/dist/bootstrap.min.css">
+	<link href='fonts?family=Ruslan+Display&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<script src="js/angular/angular.js"></script>
+	<script src="js/qform.js"></script>
+
+	<style type="text/css">
+		body{
+			font-family: 'Ruslan Display', cursive;
+		}
+
+		.container{
+			width: 800px;
+			margin: auto;
+		}
+
+		.menu{
+
+		}
+
+		.qblock{
+			width: 400px;
+			background-color: gray;
+			height: 300px;
+			margin: 100px auto;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="menu">
+			КАЛИНИНГРАД
+		</div>
+	</div>
+
+	<div class="container" ng-app="myApp">
+		<div class="qblock" ng-controller="qform">
+		<div>Вопрос:<span id="qtext" ng-bind="questions[n].txt"></span></div>
+
+		<form >
+			<div ng-repeat="t in questions[n].answ">
+				<input type="radio" ng-model="$parent.test" name="question" value="{{t}}"><span ng-bind="t"></span>
+			</div>
+			<button ng-click="nextq()">Подтвердить</button>
+		</form>	
+
+		<div>{{test}}{{n}}</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		(function () {
+			angular.module('myApp', []).controller('qform', function($scope){
+				$scope.n = 0;
+
+				$scope.questions = [			
+					{txt : "Первый вопрос",
+					answ : ["Калининград", "Кёнигсберг", "Чкаловск"]},
+					{txt : "Второй вопрос",
+					answ : ["Калининград1", "Кёнигсберг1", "Чкаловск1"]},
+					{txt : "Третий вопрос",
+					answ : ["Калининград2", "Кёнигсберг2", "Чкаловск2"]}
+				];		
+				$scope.ttl = $scope.questions[$scope.n].txt;
+				$scope.nextq = function(){
+					$scope.n++;
+					if (!$scope.questions[$scope.n]) {console.log("END")};
+					console.log($scope.n)
+				};		
+
+			});
+	})();
+
+
+	</script>
+</body>
+</html>
